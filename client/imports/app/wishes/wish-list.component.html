@@ -1,0 +1,11 @@
+<div>
+    <wishes-form></wishes-form>
+    <ul>
+        <li *ngFor="let wishlist of wishlists | async">
+            {{wishlist.name}}
+            <!--            <a [routerLink]="['/wishlist-detail', wish._id]">{{wishlist.name}}</a>-->
+            <p>{{wishlist.description}}</p>
+            <button (click)="removeWishlist(wishlist)">Delete</button>
+        </li>
+    </ul>
+</div>
