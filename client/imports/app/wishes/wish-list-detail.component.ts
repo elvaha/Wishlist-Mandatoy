@@ -10,7 +10,7 @@ import {Wishlist} from '../../../../both/models/wishlist.model';
 import template from './wish-list-detail.component.html';
 
 @Component({
-    selector: 'wish-list-details',
+    selector: 'wishlist-details',
     template
 })
 export class WishListDetailComponent{

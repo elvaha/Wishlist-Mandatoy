@@ -5,5 +5,5 @@ import {WishListDetailComponent} from './wishes/wish-list-detail.component';
 
 export const routes: Route[] = [
     {path : '', component : WishListComponent},
-    {path : 'wishlist/:wishlistId', component : WishListDetailComponent}
+    {path : 'wishlist-detail/:wishlistId', component : WishListDetailComponent}
 ];
