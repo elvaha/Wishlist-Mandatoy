@@ -1,5 +1,21 @@
-<header>
-    <h2>PARTY_NAME</h2>
+<header *ngIf="wishlist">
+    <h2>{{wishlist.name}}</h2>
 
-    <p>PARTY_DESCRIPTION</p>
+    <p>{{wishlist.description}}</p>
+
+    <ul>
+        <li *ngFor="let wish of wishlist.wishes">
+            <p>{{wish.wishName}}</p>
+            <p>{{wish.price}}</p>
+        </li>
+    </ul>
+
+    <!--
+<form (submit)="addWish()">
+    <label>Item</label>
+    <input type="text" [{ngModel}]="wishlist" name="wish">
+</form>
+-->
+
+    <a>Home</a>
 </header>

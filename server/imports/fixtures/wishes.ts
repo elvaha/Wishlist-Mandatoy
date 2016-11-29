@@ -5,10 +5,18 @@ export function loadWishlists(){
     if(Wishlists.find().cursor.count() === 0){
         const wishlists : Wishlist[] = [{
             'name': 'birthday',
-            'description': 'wishes for Martins birthday'
+            'description': 'wishes for Martins birthday',
+            'wishes' : [{'wishName' : 'something',
+                        'price' : '5'},
+                       {'wishName' : 'something',
+                        'price' : '5'}]
     }, {
             'name': 'Christmas',
-            'description': 'wishes for christmas that Carsten want'
+            'description': 'wishes for christmas that Carsten want',
+            'wishes' : [{'wishName' : 'something',
+                        'price' : '5'},
+                       {'wishName' : 'something',
+                        'price' : '5'}]
     }
     ];
         

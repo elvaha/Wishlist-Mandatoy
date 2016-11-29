@@ -21,6 +21,7 @@ export class WishlistFormComponent implements OnInit {
         this.addForm = this.formBuilder.group({
             name : ['', Validators.required],
             description : [],
+            wishes : []
         });
     }
     

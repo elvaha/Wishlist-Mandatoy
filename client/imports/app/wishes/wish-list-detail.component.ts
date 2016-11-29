@@ -31,6 +31,10 @@ export class WishListDetailComponent{
             });
     }
     
+    addWish(){
+        
+    }
+    
     ngOnDestroy(){
         this.paramsSub.unsubscribe();
     }
