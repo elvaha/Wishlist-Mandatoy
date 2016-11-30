@@ -1,7 +1,17 @@
 <header *ngIf="wishlist">
     <h2>{{wishlist.name}}</h2>
-
     <p>{{wishlist.description}}</p>
+
+    <form [formGroup]="addForm" (ngSubmit)="addWish()">
+        <label>Item</label>
+        <input type="text" formControlName="wishName">
+        <label>price</label>
+        <input type="text" formControlName="price">
+
+        <button type="submit">Add</button>
+    </form>
+
+
 
     <ul>
         <li *ngFor="let wish of wishlist.wishes">
@@ -10,12 +20,7 @@
         </li>
     </ul>
 
-    <!--
-<form (submit)="addWish()">
-    <label>Item</label>
-    <input type="text" [{ngModel}]="wishlist" name="wish">
-</form>
--->
+
 
     <a>Home</a>
 </header>

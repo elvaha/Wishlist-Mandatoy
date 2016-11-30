@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 
@@ -17,9 +19,12 @@ export class WishListDetailComponent{
     wishlistId : string;
     paramsSub : Subscription;
     wishlist : Wishlist;
+    addForm : FormGroup;
+    wishlists: Observable<Wishlist[]>;
     
     constructor(
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private formBuilder : FormBuilder
     ){}
     
     ngOnInit(){
@@ -29,10 +34,19 @@ export class WishListDetailComponent{
                 this.wishlistId = wishlistId
                 this.wishlist = Wishlists.findOne(this.wishlistId);                        
             });
+        
+        this.addForm = this.formBuilder.group({
+            wishName : ['', Validators.required],
+            price : []
+        });
     }
     
-    addWish(){
-        
+    addWish(): void{
+        if(this.addForm.valid){
+            Wishlists.update(this.wishlistId, {$push: {wishes : this.addForm.value}});
+            
+            this.addForm.reset();
+        }
     }
     
     ngOnDestroy(){

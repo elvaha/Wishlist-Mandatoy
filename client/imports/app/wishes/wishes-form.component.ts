@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { Meteor } from 'meteor/meteor';
 
 import {Wishlists} from '../../../../both/collections/wishlists.collection';
 
@@ -26,8 +27,14 @@ export class WishlistFormComponent implements OnInit {
     }
     
     addWishlist(): void{
+        
+        if(!Meteor.userId){
+            alert('Please login to add wishlist');
+            return;
+        }
+        
         if(this.addForm.valid){
-            Wishlists.insert(this.addForm.value);
+            Wishlists.insert(Object.assign({}, this.addForm.value, { owner: Meteor.userId() }));
             
             this.addForm.reset();
         }
